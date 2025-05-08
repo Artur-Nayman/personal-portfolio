@@ -23,11 +23,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  .project {
-    color: white;
-  }
-</style>
 
 </head>
 
@@ -203,14 +198,20 @@
 
         <section class="about-text">
           <p>
-            I'm a Software Developer and WordPress Specialist based in Turku, Finland, with a background in IT project leadership and a strong passion for clean, user-focused design.
-            I enjoy transforming ideas into efficient, visually appealing, and easy-to-use digital experiences.
+            I am a software developer with experience in WordPress, as well as programming in Python, JavaScript, C#,
+            and other languages. Currently based in Turku, Finland, I specialize in developing websites, tools,
+            and process automation solutions. My focus is on creating efficient, fast, and user-centric
+            web solutions that meet modern standards.
           </p>
-
           <p>
-            My work involves developing websites that are not only functional and responsive but also optimized for performance and user engagement.
-            I combine technical precision with a creative approach to ensure each project reflects the client’s vision and identity.
-            I've built websites and tools for both private clients and organizations, integrating modern tech like AI, automation, and dynamic data features.
+            I work with a variety of technologies, from front-end (HTML, CSS, JavaScript) to back-end (Python, MySQL),
+            as well as automation systems and AI integrations, such as using ChatGPT to enhance search engines or build interactive applications.
+            My projects include website development, API integrations, and creating tools for data collection and processing.
+          </p>
+          <p>
+            I have experience working on both individual projects and team-based ones,
+            such as developing React apps for bowling score tracking or automating YouTube processes using AI.
+            In my work, I always strive to optimize code and enhance user experience.
           </p>
         </section>
         <!--
@@ -300,7 +301,7 @@
           <h3 class="h3 testimonials-title">Technologies</h3>
 
           <ul class="testimonials-list has-scrollbar">
-
+            <!-- API -->
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -310,30 +311,26 @@
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>API</h4>
 
-              <div class="testimonials-text" data-testimonials-text>
-              <div class="project">
-               <h3>Telegram Bot</h3>
-                <p><strong>Purpose of using the API:</strong> To connect your program with the Telegram platform so it can send and receive messages.</p>
-                 <p><strong>How the API was used:</strong></p>
-                 <ul>
-                  <li>Fetching updates (messages) from users.</li>
-                  <li>Sending responses or messages back to chats.</li>
-                  <li>Utilized the Telegram Bot API via HTTP requests or Python libraries such as <code>python-telegram-bot</code> or <code>telebot</code>.</li>
-                </ul>
-               </div>
-
-              <div class="project">
-                <h3>Weather API Project</h3>
-                 <p><strong>Purpose of using the API:</strong> To retrieve real-time weather data.</p>
-                  <p><strong>How the API was used:</strong></p>
-                  <ul>
-                    <li>Sending requests to an external service (e.g., OpenWeatherMap API).</li>
-                    <li>Receiving responses in JSON format containing temperature, humidity, weather conditions, etc.</li>
-                    <li>Processing and displaying that weather data in your application (e.g., in a chatbot or a simple web app).</li>
-                   </ul>
-                  </div>
-              </li>
-
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    <strong>Telegram Bot</strong> <br>
+                      <strong>Purpose of using the API:</strong> To connect your program with the Telegram platform so it can send and receive messages.<br>
+                      <strong>How the API was used:</strong><br>
+                      • Fetching updates (messages) from users.<br>
+                      • Sending responses or messages back to chats.<br>
+                      • Utilized the Telegram Bot API via HTTP requests or Python libraries such as python-telegram-bot or telebot.<br>
+                    <br>
+                    <strong>Weather API Project</strong><br>
+                      Purpose of using the API: To retrieve real-time weather data.<br>
+                      <strong>How the API was used:</strong><br>
+                      • Sending requests to an external service (e.g., OpenWeatherMap API).<br>
+                      • Receiving responses in JSON format containing temperature, humidity, weather conditions, etc.<br>
+                      • Processing and displaying that weather data in my application (e.g., in a chatbot or a simple web app).<br>
+                  </p>
+                </div>
+              </div>
+            </li>
+            <!-- Web Scraping -->
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -345,15 +342,18 @@
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
-                    Projects: Telegram bot & Playlist Scraper
-                    In telegram bot was used to get values (name, price, region) from webshop named eneba.
-                    In playlist scraper was used to get data songs names from spotify playlist.
+                    <strong>Telegram Bot (Web Scraping Eneba)</strong>
+                    <br>I created a Telegram bot that uses web scraping to collect product data (such as product name, price, and region) from the Eneba webshop. The bot scrapes this information directly from the website, making it easier for users to get the details without browsing the store manually.
+
+                    <br><strong>Playlist Scraper (Web Scraping Spotify)</strong>
+                    <br>I used web scraping to collect song names from Spotify playlists. I extracted data directly from the website (or page source), which allowed me to automate gathering song information for further analysis or use.
+                    <br><br>Web scraping enables me to extract data directly from websites by parsing their HTML structure, making it useful when APIs are not available or when I need more control over the data extraction process.
                   </p>
                 </div>
 
               </div>
             </li>
-
+            <!-- Redis -->
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -365,14 +365,15 @@
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
-                    Project: Weather API <br>
-                    Used for caching weather data for 10 minutes to optimize repeated queries (can be removed if not needed).
+                    <br>I used Redis for caching weather data for 10 minutes. This helped to optimize repeated queries by storing the weather data temporarily, so that subsequent requests for the same data within the 10-minute window wouldn’t require a new fetch from the weather API, improving performance. The cache can be removed if it’s no longer needed.
+                    <br>
+                    <br>Redis is great for use cases like this, where fast, in-memory data storage is needed to improve response times and reduce the load on external services.
                   </p>
                 </div>
 
               </div>
             </li>
-
+            <!-- Databases -->
             <li class="testimonials-item">
               <div class="content-card" data-testimonials-item>
 
@@ -384,7 +385,7 @@
 
                 <div class="testimonials-text" data-testimonials-text>
                   <p>
-                    Used MySQL to add database to Telegram bot project and than for easier information sorting.
+                    I used MySQL to add a database to the Telegram bot. This allowed me to store and organize the data more efficiently, making it easier to sort and query the information, such as product details or user interactions. Using MySQL helped streamline data management and ensured the bot could handle and retrieve information quickly.
                   </p>
                 </div>
 
