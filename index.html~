@@ -502,7 +502,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                  <img src="./assets/images/git.svg" alt="Emily evans" width="60" data-testimonials-avatar>
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Git</h4>
@@ -1088,6 +1088,24 @@
 
           <ul class="project-list">
 
+            <li class="project-item  active" data-filter-item data-category="other">
+              <a href="https://github.com/Artur-Nayman/icon_changer">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="icon changer" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Icon Changer</h3>
+
+                <p class="project-category">Other</p>
+
+              </a>
+            </li>
+
             <li class="project-item  active" data-filter-item data-category="web development">
               <a href="https://hxamedia.fi">
 
@@ -1162,6 +1180,24 @@
 
             <li class="project-item  active" data-filter-item data-category="automatization">
               <a href="https://github.com/Artur-Nayman/TranslitMapper">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="translitmapper" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">TranslitMapper</h3>
+
+                <p class="project-category">Automatization</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="automatization">
+              <a href="https://github.com/Artur-Nayman/Daily-Commit">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
