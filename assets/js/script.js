@@ -156,4 +156,41 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+
+
+
+// project modal
+const projectModalOverlay = document.getElementById('projectModalOverlay');
+const projectModalCloseBtn = document.getElementById('projectModalClose');
+const projectModalTitle = document.getElementById('projectModalTitle');
+const projectModalCategory = document.getElementById('projectModalCategory');
+const projectModalDesc = document.getElementById('projectModalDesc');
+const projectModalImg = document.getElementById('projectModalImg');
+const projectModalLink = document.getElementById('projectModalLink');
+
+const projectCards = document.querySelectorAll('[data-project-item]');
+
+for (let i = 0; i < projectCards.length; i++) {
+  projectCards[i].addEventListener('click', function () {
+    projectModalTitle.textContent = this.dataset.projectTitle;
+    projectModalCategory.textContent = this.dataset.projectCategory;
+    projectModalDesc.textContent = this.dataset.projectDesc;
+    projectModalImg.src = this.dataset.projectImg;
+    projectModalImg.alt = this.dataset.projectTitle;
+    projectModalLink.href = this.dataset.projectLink;
+    projectModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
 }
+
+projectModalCloseBtn.addEventListener('click', function () {
+  projectModalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+projectModalOverlay.addEventListener('click', function (e) {
+  if (e.target === this) {
+    projectModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
