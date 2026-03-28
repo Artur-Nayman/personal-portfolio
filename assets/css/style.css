@@ -838,6 +838,13 @@ main {
 
 .skills-list { padding: 20px; }
 
+.skill-text {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  margin-top: 4px;
+}
 
 .skills-item:not(:last-child) { margin-bottom: 15px; }
 
