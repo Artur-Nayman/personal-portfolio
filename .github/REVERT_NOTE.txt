@@ -1,0 +1,14 @@
+Repository reverted to March 28, 2026 state.
+
+This revert was performed on April 30, 2026 to restore the codebase to its March 28 version.
+All commits after 0c3ebb88f5624b2163400296f4ee17c4bbffb111 have been reverted.
+
+The following commits were undone:
+- a064c43c: Update timeline section with new internship experience and project details
+- cd0a513c: Enhance SEO and update social media links
+- 891183ad: Clean up CSS by removing testimonials styles
+- 4e489050: Enhance README with detailed portfolio information
+- 85b2307d: Refactor CSS for project modal and cleanup
+- 22ba4caeb: Update script.js
+- 94ceb9b7: Refactor event listeners and navigation logic
+- 1a106e2f: Adjust sidebar max-height and related styles
