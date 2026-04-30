@@ -25,7 +25,7 @@ if (select) {
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
+    let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
@@ -39,7 +39,7 @@ const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase()) {
+    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase().trim()) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
@@ -52,7 +52,7 @@ let lastClickedBtn = filterBtn[0];
 
 for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
+    let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
@@ -64,25 +64,31 @@ for (let i = 0; i < filterBtn.length; i++) {
   });
 }
 
-// page navigation variables
+// --- FULLY REWRITTEN PAGE NAVIGATION LOGIC ---
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav links
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
+navigationLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    // Get the name of the page clicked (e.g., "about", "project history")
+    const targetPage = this.innerText.toLowerCase().trim();
+
+    // 1. Remove "active" class from ALL links and ALL pages
+    navigationLinks.forEach(nav => nav.classList.remove("active"));
+    pages.forEach(page => page.classList.remove("active"));
+
+    // 2. Add "active" class to the clicked link
+    this.classList.add("active");
+
+    // 3. Find the correct page and add "active" to it
+    pages.forEach(page => {
+      if (page.dataset.page.toLowerCase().trim() === targetPage) {
+        page.classList.add("active");
+        window.scrollTo(0, 0); // Scroll to top when switching tabs
       }
-    }
+    });
   });
-}
+});
 
 // --- Project Modal Functionality ---
 const projectItems = document.querySelectorAll("[data-project-item]");
