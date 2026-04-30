@@ -1,37 +1,75 @@
-# Artur Nayman – Personal Portfolio
+# 🎯 Artur Nayman – Personal Portfolio
 
-👋 Welcome! This is the personal portfolio of **Artur Nayman**, a Full-Stack Software Developer based in Turku, Finland.  
-It showcases my work, skills, and experience across the entire development lifecycle—from designing UIs to building scalable backend systems and automation tools.
-
-## 🚀 What’s Inside
-
-This portfolio highlights my real-world experience and projects, including:
-
-- 💻 **Full-Stack Web Apps:** Complete applications built with React, Node.js, and PostgreSQL (e.g., *GameLib*, *Coffee Shop*).
-- 🎨 **Frontend & Client Sites:** Responsive, production-ready websites for real business clients (e.g., *theFirma*, *HXAmedia*).
-- 🐍 **Python Automation & Tools:** Custom desktop applications, web scrapers, file sorters, and intelligent Telegram bots.
-- 📡 **APIs & Backend Services:** REST API design and integration using FastAPI and Express, handling external services like Spotify and YouTube.
-
-## 🧰 Tech Stack
-
-- **Languages**: JavaScript, TypeScript, Python, C#, SQL, HTML, CSS
-- **Frontend**: React, component-based UI architecture, responsive design
-- **Backend & APIs**: Node.js, Express, FastAPI, REST APIs
-- **Databases**: PostgreSQL, MySQL, relational data modeling
-- **Automation**: Web scraping, API integrations (Telegram, Spotify, YouTube), bots
-- **Tools & Workflow**: Git, GitHub, Scrum, VS Code
-
-## 🌐 Live Site
-
-👉 [View the Portfolio](https://artur-nayman.github.io/personal-portfolio/)
-
-## 📫 Contact & Links
-
-- **Email**: arturnaiman@gmail.com  
-- **Location**: Turku, Finland  
-- **LinkedIn**: [Artur Nayman](https://www.linkedin.com/in/artur-nayman-98ba12200/)
-- **GitHub**:[Artur-Nayman](https://github.com/Artur-Nayman)
+A clean, responsive personal portfolio website showcasing my work as a **Full-Stack Software Developer** based in Turku, Finland. Built with vanilla **HTML, CSS, and JavaScript**—no frameworks, just pure web fundamentals.
 
 ---
 
-Thanks for visiting!
+## 📋 What's This Repository?
+
+This is the **source code** for my portfolio website, hosted on GitHub Pages. It presents my professional experience, technical skills, and completed projects in a modern, minimalist design.
+
+### ✨ Key Features
+
+- **Responsive Design**: Looks great on desktop, tablet, and mobile devices
+- **Lightweight & Fast**: Pure HTML/CSS/JavaScript—no heavy frameworks
+- **Clean Code**: Well-organized structure for easy customization
+- **Live Demo**: Deployed automatically via GitHub Pages
+
+---
+
+## 🗂️ Project Structure
+
+```
+personal-portfolio/
+├── index.html              # Main portfolio page
+├── README.md              # This file
+├── assets/                # Images, icons, and media
+├── website-demo-image/    # Screenshots and demo assets
+└── .github/               # GitHub configurations
+```
+
+---
+
+## 💼 What I Showcase
+
+- **Full-Stack Web Applications** – Complete projects with React, Node.js, and PostgreSQL
+- **Client Websites** – Production-ready responsive sites for real business clients
+- **Python Automation** – Desktop apps, web scrapers, bots, and CLI tools
+- **Backend APIs** – REST API design with FastAPI, Express, and third-party integrations
+
+---
+
+## 🛠️ Tech Stack
+
+**Languages**: JavaScript, TypeScript, Python, C#, SQL, HTML, CSS  
+**Frontend**: React, responsive design, component architecture  
+**Backend**: Node.js, Express, FastAPI, REST APIs  
+**Databases**: PostgreSQL, MySQL  
+**Automation**: Web scraping, API integrations (Telegram, Spotify, YouTube)  
+**Tools**: Git, GitHub, VS Code, Scrum
+
+---
+
+## 🚀 Live Portfolio
+
+👉 **[View Live](https://artur-nayman.github.io/personal-portfolio/)**
+
+---
+
+## 📞 Get in Touch
+
+- 📧 **Email**: arturnaiman@gmail.com
+- 📍 **Location**: Turku, Finland
+- 🔗 **LinkedIn**: [Artur Nayman](https://www.linkedin.com/in/artur-nayman-98ba12200/)
+- 🐙 **GitHub**: [@Artur-Nayman](https://github.com/Artur-Nayman)
+
+---
+
+## 📝 License
+
+This project is open source and available for reference. Feel free to use it as inspiration for your own portfolio!
+
+---
+
+**Last Updated**: April 30, 2026  
+Thanks for visiting! 👋
