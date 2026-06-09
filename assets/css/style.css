@@ -305,11 +305,10 @@ main {
 }
 
 .info-content .title {
-  color: var(--white-1);
-  background: var(--onyx);
+  color: var(--white-2);
   font-size: var(--fs-8);
-  font-weight: var(--fw-300);
-  width: max-content;
+  font-weight: var(--fw-400);
+  line-height: 1.4;
   padding: 3px 12px;
   border-radius: 8px;
 }
