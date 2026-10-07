@@ -29,6 +29,16 @@ for (let i = 0; i < selectItems.length; i++) {
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
+
+    // Sync with large screen filter buttons
+    for (let j = 0; j < filterBtn.length; j++) {
+      if (filterBtn[j].innerText.toLowerCase().trim() === selectedValue) {
+        if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+        filterBtn[j].classList.add("active");
+        lastClickedBtn = filterBtn[j];
+        break;
+      }
+    }
   });
 }
 
