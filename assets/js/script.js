@@ -23,14 +23,24 @@ if (select) {
 }
 
 // add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
+selectItems.forEach(item => {
+  item.addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
+
+    // Sync with large screen filter buttons
+    for (let j = 0; j < filterBtn.length; j++) {
+      if (filterBtn[j].innerText.toLowerCase().trim() === selectedValue) {
+        if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+        filterBtn[j].classList.add("active");
+        lastClickedBtn = filterBtn[j];
+        break;
+      }
+    }
   });
-}
+});
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
@@ -43,26 +53,22 @@ for (let i = 0; i < filterItems.length; i++) {
 }
 
 const filterFunc = function (selectedValue) {
-  if (selectedValue === "all") {
-    for (let i = 0; i < filterItems.length; i++) {
-      filterItems[i].classList.add("active");
+  filterItems.forEach(item => {
+    if (selectedValue === "all") {
+      item.classList.add("active");
+    } else if (selectedValue === item.dataset.category.toLowerCase().trim()) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
     }
-  } else {
-    for (let i = 0; i < filterItems.length; i++) {
-      if (selectedValue === filterItems[i].dataset.normalizedCategory) {
-        filterItems[i].classList.add("active");
-      } else {
-        filterItems[i].classList.remove("active");
-      }
-    }
-  }
+  });
 }
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
-  filterBtn[i].addEventListener("click", function () {
+filterBtn.forEach((btn) => {
+  btn.addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
@@ -73,11 +79,17 @@ for (let i = 0; i < filterBtn.length; i++) {
     this.classList.add("active");
     lastClickedBtn = this;
   });
-}
+});
 
 // --- FULLY REWRITTEN PAGE NAVIGATION LOGIC ---
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
+
+// Pre-compute map for O(1) lookups
+const pagesMap = new Map();
+pages.forEach(page => {
+  pagesMap.set(page.dataset.page.toLowerCase().trim(), page);
+});
 
 navigationLinks.forEach((link) => {
   link.addEventListener("click", function () {
@@ -92,12 +104,11 @@ navigationLinks.forEach((link) => {
     this.classList.add("active");
 
     // 3. Find the correct page and add "active" to it
-    pages.forEach(page => {
-      if (page.dataset.page.toLowerCase().trim() === targetPage) {
-        page.classList.add("active");
-        window.scrollTo(0, 0); // Scroll to top when switching tabs
-      }
-    });
+    const targetPageElem = pagesMap.get(targetPage);
+    if (targetPageElem) {
+      targetPageElem.classList.add("active");
+      window.scrollTo(0, 0); // Scroll to top when switching tabs
+    }
   });
 });
 
@@ -117,17 +128,17 @@ const toggleProjectModal = function () {
   }
 }
 
-for (let i = 0; i < projectItems.length; i++) {
-  projectItems[i].addEventListener("click", function () {
+projectItems.forEach(item => {
+  item.addEventListener("click", function () {
     const title = this.dataset.projectTitle;
     const category = this.dataset.projectCategory;
     const desc = this.dataset.projectDesc;
     const img = this.dataset.projectImg;
     const link = this.dataset.projectLink;
 
-    if (projectModalTitle) projectModalTitle.innerHTML = title;
-    if (projectModalCategory) projectModalCategory.innerHTML = category;
-    if (projectModalDesc) projectModalDesc.innerHTML = desc;
+    if (projectModalTitle) projectModalTitle.textContent = title;
+    if (projectModalCategory) projectModalCategory.textContent = category;
+    if (projectModalDesc) projectModalDesc.textContent = desc;
     if (projectModalImg) {
       projectModalImg.src = img;
       projectModalImg.alt = title;
@@ -144,7 +155,7 @@ for (let i = 0; i < projectItems.length; i++) {
 
     toggleProjectModal();
   });
-}
+});
 
 if (projectModalClose) {
   projectModalClose.addEventListener("click", toggleProjectModal);
