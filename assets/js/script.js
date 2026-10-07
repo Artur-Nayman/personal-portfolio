@@ -29,6 +29,16 @@ selectItems.forEach(item => {
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
     filterFunc(selectedValue);
+
+    // Sync with large screen filter buttons
+    for (let j = 0; j < filterBtn.length; j++) {
+      if (filterBtn[j].innerText.toLowerCase().trim() === selectedValue) {
+        if (lastClickedBtn) lastClickedBtn.classList.remove("active");
+        filterBtn[j].classList.add("active");
+        lastClickedBtn = filterBtn[j];
+        break;
+      }
+    }
   });
 });
 
@@ -50,7 +60,7 @@ const filterFunc = function (selectedValue) {
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
-filterBtn.forEach(btn => {
+filterBtn.forEach((btn) => {
   btn.addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
@@ -68,6 +78,12 @@ filterBtn.forEach(btn => {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Pre-compute map for O(1) lookups
+const pagesMap = new Map();
+pages.forEach(page => {
+  pagesMap.set(page.dataset.page.toLowerCase().trim(), page);
+});
+
 navigationLinks.forEach((link) => {
   link.addEventListener("click", function () {
     // Get the name of the page clicked (e.g., "about", "project history")
@@ -81,12 +97,11 @@ navigationLinks.forEach((link) => {
     this.classList.add("active");
 
     // 3. Find the correct page and add "active" to it
-    pages.forEach(page => {
-      if (page.dataset.page.toLowerCase().trim() === targetPage) {
-        page.classList.add("active");
-        window.scrollTo(0, 0); // Scroll to top when switching tabs
-      }
-    });
+    const targetPageElem = pagesMap.get(targetPage);
+    if (targetPageElem) {
+      targetPageElem.classList.add("active");
+      window.scrollTo(0, 0); // Scroll to top when switching tabs
+    }
   });
 });
 
@@ -114,9 +129,9 @@ projectItems.forEach(item => {
     const img = this.dataset.projectImg;
     const link = this.dataset.projectLink;
 
-    if (projectModalTitle) projectModalTitle.innerHTML = title;
-    if (projectModalCategory) projectModalCategory.innerHTML = category;
-    if (projectModalDesc) projectModalDesc.innerHTML = desc;
+    if (projectModalTitle) projectModalTitle.textContent = title;
+    if (projectModalCategory) projectModalCategory.textContent = category;
+    if (projectModalDesc) projectModalDesc.textContent = desc;
     if (projectModalImg) {
       projectModalImg.src = img;
       projectModalImg.alt = title;
