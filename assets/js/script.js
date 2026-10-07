@@ -114,9 +114,9 @@ for (let i = 0; i < projectItems.length; i++) {
     const img = this.dataset.projectImg;
     const link = this.dataset.projectLink;
 
-    if (projectModalTitle) projectModalTitle.innerHTML = title;
-    if (projectModalCategory) projectModalCategory.innerHTML = category;
-    if (projectModalDesc) projectModalDesc.innerHTML = desc;
+    if (projectModalTitle) projectModalTitle.textContent = title;
+    if (projectModalCategory) projectModalCategory.textContent = category;
+    if (projectModalDesc) projectModalDesc.textContent = desc;
     if (projectModalImg) {
       projectModalImg.src = img;
       projectModalImg.alt = title;
