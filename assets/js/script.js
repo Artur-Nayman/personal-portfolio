@@ -78,6 +78,12 @@ for (let i = 0; i < filterBtn.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Pre-compute map for O(1) lookups
+const pagesMap = new Map();
+pages.forEach(page => {
+  pagesMap.set(page.dataset.page.toLowerCase().trim(), page);
+});
+
 navigationLinks.forEach((link) => {
   link.addEventListener("click", function () {
     // Get the name of the page clicked (e.g., "about", "project history")
@@ -91,12 +97,11 @@ navigationLinks.forEach((link) => {
     this.classList.add("active");
 
     // 3. Find the correct page and add "active" to it
-    pages.forEach(page => {
-      if (page.dataset.page.toLowerCase().trim() === targetPage) {
-        page.classList.add("active");
-        window.scrollTo(0, 0); // Scroll to top when switching tabs
-      }
-    });
+    const targetPageElem = pagesMap.get(targetPage);
+    if (targetPageElem) {
+      targetPageElem.classList.add("active");
+      window.scrollTo(0, 0); // Scroll to top when switching tabs
+    }
   });
 });
 
