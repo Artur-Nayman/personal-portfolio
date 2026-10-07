@@ -23,8 +23,8 @@ if (select) {
 }
 
 // add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
+selectItems.forEach(item => {
+  item.addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
@@ -40,21 +40,21 @@ for (let i = 0; i < selectItems.length; i++) {
       }
     }
   });
-}
+});
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
+  filterItems.forEach(item => {
     if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category.toLowerCase().trim()) {
-      filterItems[i].classList.add("active");
+      item.classList.add("active");
+    } else if (selectedValue === item.dataset.category.toLowerCase().trim()) {
+      item.classList.add("active");
     } else {
-      filterItems[i].classList.remove("active");
+      item.classList.remove("active");
     }
-  }
+  });
 }
 
 // add event in all filter button items for large screen
@@ -121,8 +121,8 @@ const toggleProjectModal = function () {
   }
 }
 
-for (let i = 0; i < projectItems.length; i++) {
-  projectItems[i].addEventListener("click", function () {
+projectItems.forEach(item => {
+  item.addEventListener("click", function () {
     const title = this.dataset.projectTitle;
     const category = this.dataset.projectCategory;
     const desc = this.dataset.projectDesc;
@@ -148,7 +148,7 @@ for (let i = 0; i < projectItems.length; i++) {
 
     toggleProjectModal();
   });
-}
+});
 
 if (projectModalClose) {
   projectModalClose.addEventListener("click", toggleProjectModal);
