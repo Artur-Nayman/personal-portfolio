@@ -1,0 +1,27 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "A clean, responsive personal portfolio website showcasing my work as a **Full-Stack Software Developer** based in Turku, Finland. Built with vanilla **HTML, CSS, and JavaScript**—no frameworks, just pure web fundamentals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artur-Nayman/personal-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Artur-Nayman/personal-portfolio/issues"
+  },
+  "homepage": "https://github.com/Artur-Nayman/personal-portfolio#readme",
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
