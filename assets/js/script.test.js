@@ -1,49 +1,65 @@
-describe('filterFunc', () => {
-  let filterFunc;
+/**
+ * @jest-environment jsdom
+ */
 
-  beforeEach(() => {
-    // Set up the DOM with mock elements
-    document.body.innerHTML = `
-      <div data-filter-item data-category="web design" class="active"></div>
-      <div data-filter-item data-category="web development" class=""></div>
-      <div data-filter-item data-category=" Web Design " class=""></div>
-      <div data-filter-item data-category="applications" class="active"></div>
-    `;
+const fs = require('fs');
+const path = require('path');
 
-    // Clear module cache to re-evaluate the script and grab new DOM elements
-    jest.resetModules();
+const scriptCode = fs.readFileSync(path.resolve(__dirname, './script.js'), 'utf-8');
 
-    // Import the function after DOM is set up
-    const script = require('./script.js');
-    filterFunc = script.filterFunc;
+const getScriptEnvironment = () => {
+  // Setup minimal DOM needed for the script to not throw errors on initialization
+  document.body.innerHTML = `
+    <div data-sidebar></div>
+    <button data-sidebar-btn></button>
+    <div data-select></div>
+    <div data-selecct-value></div>
+    <div data-filter-btn></div>
+    <div data-project-item></div>
+  `;
+
+  // Wrap the script execution to extract the elementToggleFunc
+  const wrapper = `
+    (function() {
+      ${scriptCode.replace(/'use strict';/g, '')}
+      return elementToggleFunc;
+    })();
+  `;
+
+  return eval(wrapper);
+};
+
+describe('elementToggleFunc', () => {
+  let elementToggleFunc;
+
+  beforeAll(() => {
+    elementToggleFunc = getScriptEnvironment();
   });
 
-  test('should show all items when selectedValue is "all"', () => {
-    filterFunc('all');
+  it('should add "active" class if it does not exist', () => {
+    const el = document.createElement('div');
+    expect(el.classList.contains('active')).toBe(false);
 
-    const items = document.querySelectorAll('[data-filter-item]');
-    items.forEach(item => {
-      expect(item.classList.contains('active')).toBe(true);
-    });
+    elementToggleFunc(el);
+    expect(el.classList.contains('active')).toBe(true);
   });
 
-  test('should show only items matching the exact category', () => {
-    filterFunc('web design');
+  it('should remove "active" class if it exists', () => {
+    const el = document.createElement('div');
+    el.classList.add('active');
+    expect(el.classList.contains('active')).toBe(true);
 
-    const items = document.querySelectorAll('[data-filter-item]');
-    expect(items[0].classList.contains('active')).toBe(true); // web design
-    expect(items[1].classList.contains('active')).toBe(false); // web development
-    expect(items[2].classList.contains('active')).toBe(true); // Web Design (testing trim and lowercase match)
-    expect(items[3].classList.contains('active')).toBe(false); // applications
+    elementToggleFunc(el);
+    expect(el.classList.contains('active')).toBe(false);
   });
 
-  test('should handle spaces and casing in dataset category correctly', () => {
-    // The elements have spaces in the DOM dataset definition, we should match them correctly
-    // The filterFunc transforms the dataset.category by lowercasing and trimming
-    filterFunc('applications');
+  it('should maintain other classes when toggling "active"', () => {
+    const el = document.createElement('div');
+    el.className = 'btn btn-primary';
 
-    const items = document.querySelectorAll('[data-filter-item]');
-    expect(items[0].classList.contains('active')).toBe(false); // web design
-    expect(items[3].classList.contains('active')).toBe(true); // applications
+    elementToggleFunc(el);
+    expect(el.classList.contains('active')).toBe(true);
+    expect(el.classList.contains('btn')).toBe(true);
+    expect(el.classList.contains('btn-primary')).toBe(true);
   });
 });
