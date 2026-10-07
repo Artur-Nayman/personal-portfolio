@@ -45,6 +45,13 @@ selectItems.forEach(item => {
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
+// Pre-compute normalized category strings to optimize filtering
+for (let i = 0; i < filterItems.length; i++) {
+  if (filterItems[i].dataset.category) {
+    filterItems[i].dataset.normalizedCategory = filterItems[i].dataset.category.toLowerCase().trim();
+  }
+}
+
 const filterFunc = function (selectedValue) {
   filterItems.forEach(item => {
     if (selectedValue === "all") {
