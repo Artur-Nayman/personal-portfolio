@@ -50,8 +50,8 @@ const filterFunc = function (selectedValue) {
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
-  filterBtn[i].addEventListener("click", function () {
+filterBtn.forEach((btn) => {
+  btn.addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase().trim();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
@@ -62,7 +62,7 @@ for (let i = 0; i < filterBtn.length; i++) {
     this.classList.add("active");
     lastClickedBtn = this;
   });
-}
+});
 
 // --- FULLY REWRITTEN PAGE NAVIGATION LOGIC ---
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
